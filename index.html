@@ -16,6 +16,44 @@
         <link rel="stylesheet" type="text/css" href="css/demo1.css" />
         <link rel="stylesheet" type="text/css" href="css/style1.css" />
 		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+		 <script type='text/javascript'>
+		var requete = null;
+
+		function envoyer(){
+			var nom = document.getElementById("username").value;
+			var passe = document.getElementById("password").value;
+			envoyerRequete(nom,passe);
+		}
+		function obtenirObjetRequete() {
+			if (window.ActiveXObject) { requete= new ActiveXObject("Microsoft.XMLHTTP");
+			} else if (window.XMLHttpRequest) { requete = new XMLHttpRequest(); }
+		}
+		function envoyerRequete(user,pass) {
+			if (requete === null) {
+				obtenirObjetRequete();
+			}
+			if (user=="" || pass=="" )
+			{
+				document.getElementById("tableau").innerHTML="<p>Login error!</p>";
+				return;
+			} 
+			requete.open("GET","Connexion.php?username="+user+'&'+"password="+pass,true);
+			params = "username="+user+'&'+"password="+pass;
+			requete.onreadystatechange = traiterReponse ;
+			requete.send();
+		}
+		function traiterReponse () {
+			if (requete.readyState==4 & requete.status == 200)
+			{
+			 if(requete.responseText == "true"){
+			 window.location.href="http://localhost/Cynthie_et_Rudy/Home.html";
+             }			
+			
+			}
+			document.getElementById("tableau").innerHTML='<p style="color: green; text-style: arial; text-align: center;"><font size="5">Login error! please check the login informations an resubmit again.</font></p>';
+		}
+	
+    </script>
     </head>
     <body>
         <div class="container">
@@ -34,7 +72,7 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  method="POST" action="Connexion.php" autocomplete="on" > 
+                            <form method="GET" autocomplete="on" > 
                                 <h1>Log in</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Your email or username </label>
@@ -49,7 +87,7 @@
 									<label for="loginkeeping">Keep me logged in</label>
 								</p>
                                 <p class="login button"> 
-                                    <input type="submit" value="Login" /> 
+                                     <input type="button" value= "envoyer" onclick="return envoyer();">
 								</p>
                                 <p class="change_link">
 									Not a member yet ?
@@ -88,8 +126,11 @@
                         </div>
 						
                     </div>
+					<div id="tableau" >
+					</div>
                 </div>  
             </section>
         </div>
+		
     </body>
 </html>

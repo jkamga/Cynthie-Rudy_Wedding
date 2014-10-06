@@ -1,14 +1,12 @@
 <?php
 require 'SGBD_reader.php';
 include ('Model/User.php');
-echo '<h1>Connexion</h1>'; 
-$titre="Connexion";
 
 //On reprend la suite du code
 /*if($id!=0){
 erreur(ERR_IS_CO);
 }*/
-if(! isset($_POST['username']) || ! isset($_POST['password'])){
+if(! isset($_GET['username']) || ! isset($_GET['password'])){
 echo '<p>une erreur s\'est produite pendant votre identification.
 		Vous devez remplir tous les champs</p>
 		<p>Cliquez <a href="./index.html">ici</a> pour revenir</p>';
@@ -17,7 +15,7 @@ else
 {
     
     $message='';
-    if (empty($_POST['username']) || empty($_POST['password']) ) //Oublie d'un champ
+    if (empty($_GET['username']) || empty($_GET['password']) ) //Oublie d'un champ
     {
         $message = '<p>une erreur s\'est produite pendant votre identification.
 		Vous devez remplir tous les champs</p>
@@ -27,32 +25,27 @@ else
     {
 	    session_start();
 
-	if ( isset($_POST['username']) && isset($_POST['password'])) // Acces OK !
+	if ( isset($_GET['username']) && isset($_GET['password'])) // Acces OK !
 	{
-	    $autorisation_order = validateUser($_POST['username'],$_POST['password'],$parsed_users_from_DB);
+	    $autorisation_order = validateUser($_GET['username'],$_GET['password'],$parsed_users_from_DB);
+
 		
-		
-		if($autorisation_order == 'valid'){
+		if(strcmp($autorisation_order ,"valid")==0){
 		
 	    $current_user = new User();
-		$current_user ->set_username($_POST['username']);
-		$current_user ->set_password($_POST['password']);
+		$current_user ->set_username($_GET['username']);
+		$current_user ->set_password($_GET['password']);
 		//$current_user ->set_level($_POST['level']);
 		//$current_user ->set_email($_POST['email']);
-		
 	    $_SESSION['current_user'] = $current_user;
-	    
-	    /*$message = '<p>Bienvenue '.$_POST['username'].', 
+	  
+	  /* $message = '<html><body><div><p>Bienvenue '.$_GET['username'].', 
 			vous êtes maintenant connecté!</p>
 			<p>Cliquez <a href="./home.html">ici</a> 
-			pour revenir à la page d accueil</p>';  */
-			header("Location: http://localhost/Cynthie_et_Rudy/home.html");
-	    }else{
-		
-		$message = '<p>une erreur s\'est produite pendant votre identification.
-		Vous devez remplir tous les champs</p>
-		<p>Cliquez <a href="./index.html">ici</a> pour revenir</p>';
-		}
+			pour revenir à la page d accueil</p>';  
+			
+	    }*/
+		$message = "true";
 	}
 	else // Acces pas OK !
 	{
@@ -65,7 +58,8 @@ else
 	}
    
     }
-    echo $message.'</div></body></html>';
+    echo $message;
 
+}
 }
 ?>
