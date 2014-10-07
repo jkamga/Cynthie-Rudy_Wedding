@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+if( $_SESSION['current_user'] == null){
+header("Location: http://localhost/Cynthie_et_Rudy/index.html"); /* Redirect browser */
+/* Make sure that code below does not get executed when we redirect. */
+exit;
+}
 <head>
     <title>Contacts</title>
     <meta charset="utf-8">
@@ -25,10 +32,10 @@
 <body>
 <div class="sub-pages">
    <header>                   	
-      <h1><a href="index.html"><img src="images/logo.png" alt=""></a></h1> 
+      <h1 id="logo"><a href="home.php"><img style="width: 75%;" src="images/logo.png" alt="Cynthie & Rudy"></a></h1> 
       <nav>  
         <ul class="menu">
-              <li><a href="index.html">about</a></li>
+              <li><a href="home.php">about</a></li>
               <li><a href="wedding.html">wedding</a></li>
               <li><a href="album.html">album</a></li>
               <li><a href="links.html">links</a></li>
@@ -79,8 +86,8 @@
     </section> 
 <!--==============================footer=================================-->
   <footer>
-      <p><strong>© 2012  Kate&amp;Leo</strong><br> <a class="link" href="http://www.templatemonster.com/" target="_blank" rel="nofollow">Website Template</a> by TemplateMonster.com</p>
+      <p><strong>© 2014  Cynthie&amp;Rudy</strong><br>by new home tech</p>
       <div class="soc-icons"><a href="#"><img src="images/icon-1.png" alt=""></a><a href="#"><img src="images/icon-2.png" alt=""></a><a href="#"><img src="images/icon-3.png" alt=""></a></div>
-  </footer>	
+  </footer>		
 </body>
 </html>

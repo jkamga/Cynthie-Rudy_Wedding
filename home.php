@@ -1,5 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+if( $_SESSION['current_user'] == null){
+header("Location: http://localhost/Cynthie_et_Rudy/index.html"); /* Redirect browser */
+/* Make sure that code below does not get executed when we redirect. */
+exit;
+}
+?>
 <head>
     <title>Home</title>
     <meta charset="utf-8">
@@ -31,6 +40,7 @@
 				progressBar:false
 			})		
 		});
+		
 	</script>
 	<!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
@@ -46,10 +56,10 @@
 </head>
 <body>           			
    <header>                   	
-      <h1><a href="home.html"><img src="images/logo.png" alt=""></a></h1> 
+      <h1 id="logo"><a href="home.php"><img style="width: 75%;" src="images/logo.png" alt="Cynthie & Rudy"></a></h1> 
       <nav>  
         <ul class="menu">
-              <li class="current"><a href="home.html">about</a></li>
+              <li class="current"><a href="home.php">about</a></li>
               <li><a href="wedding.html">wedding</a></li>
               <li><a href="album.html">album</a></li>
               <li><a href="links.html">links</a></li>
@@ -98,11 +108,11 @@
             </div>
             <div class="grid_8">
             	<div class="top-1 right-1">
-                	<h3><strong>About</strong> Kate</h3>
+                	<h3><strong>About</strong> Cynthie</h3>
                     <div class="box-1">
                     	<img src="images/page1-img1.jpg" alt="" class="img-border img-indent">
                         <div class="extra-wrap">
-                        	<p class="text-1">Kate Nelson</p>
+                        	<p class="text-1">Cynthie</p>
                             <p class="text-2">24 years old<br>Beginner actress</p>
                         </div>
                     </div>
@@ -116,11 +126,11 @@
             </div>  
             <div class="grid_7">
             	<div class="top-1">
-                	<h3><strong>About</strong> Leo</h3>
+                	<h3><strong>About</strong> Rudy</h3>
                     <div class="box-1">
                     	<img src="images/page1-img2.jpg" alt="" class="img-border img-indent">
                         <div class="extra-wrap">
-                        	<p class="text-1">Leo Green</p>
+                        	<p class="text-1">Rudy </p>
                             <p class="text-2">28 years old<br>Layer</p>
                         </div>
                     </div>
@@ -144,7 +154,7 @@
     </section> 
 <!--==============================footer=================================-->
   <footer>
-      <p><strong>© 2012  Kate&amp;Leo</strong><br> <a class="link" href="http://www.templatemonster.com/" target="_blank" rel="nofollow">Website Template</a> by TemplateMonster.com</p>
+      <p><strong>© 2014  Cynthie&amp;Rudy</strong><br>by new home tech</p>
       <div class="soc-icons"><a href="#"><img src="images/icon-1.png" alt=""></a><a href="#"><img src="images/icon-2.png" alt=""></a><a href="#"><img src="images/icon-3.png" alt=""></a></div>
   </footer>	
 </body>
