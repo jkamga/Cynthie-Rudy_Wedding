@@ -66,7 +66,7 @@ a{
 	height: 100%;
 	position: relative;
 	text-align: center;
-	background: #FF99FF;
+	background: #fff url(../images/font.gif) repeat top left;
 }
 .clr{
 	clear: both;
