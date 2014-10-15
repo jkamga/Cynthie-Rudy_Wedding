@@ -163,7 +163,13 @@ dl.adr dd a:hover {}
 
 /*****************************************************/
 #logo{
-left: -250px;
-margin-top: 20px;
 position: relative;
+left: -200px;
+margin-top: 20px;
+width: 15%;
+}
+#donation{
+margin-left: 100px;
+margin-top: 40px;
+background: #FF00FF;
 }

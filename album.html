@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
-if( $_SESSION['current_user'] == null){
-header("Location: http://localhost/Cynthie_et_Rudy/index.html"); /* Redirect browser */
-/* Make sure that code below does not get executed when we redirect. */
-exit;
-}
+require 'prevent_free_session.php';
+?>
 <head>
     <title>Album</title>
     <meta charset="utf-8">
@@ -61,9 +57,22 @@ exit;
               <li><a href="home.php">about</a></li>
               <li><a href="wedding.html">wedding</a></li>
               <li class="current"><a href="album.html">album</a></li>
-              <li><a href="links.html">links</a></li>
               <li><a href="wishes.html">your wishes</a></li>
               <li><a href="contacts.html">contacts</a></li>
+			  <li id="donation">
+			  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+			<input type="hidden" name="cmd" value="_donations">
+			<input type="hidden" name="business" value="jkamga.officiel@gmail.com">
+			<input type="hidden" name="lc" value="CA">
+			<input type="hidden" name="item_name" value="Rudy & Cinthy">
+			<input type="hidden" name="item_number" value="wedding">
+			<input type="hidden" name="no_note" value="0">
+			<input type="hidden" name="currency_code" value="CAD">
+			<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+			<input type="image" src="https://www.paypalobjects.com/fr_CA/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+			<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+			</form>
+			</li>			  
           </ul>
       </nav>
     </header> 

@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
-if( $_SESSION['current_user'] == null){
-header("Location: http://localhost/Cynthie_et_Rudy/index.html"); /* Redirect browser */
-/* Make sure that code below does not get executed when we redirect. */
-exit;
-}
+require 'prevent_free_session.php';
+?>
 <head>
     <title>Your Wishes</title>
     <meta charset="utf-8">
@@ -38,9 +34,22 @@ exit;
               <li><a href="home.php">about</a></li>
               <li><a href="wedding.html">wedding</a></li>
               <li><a href="album.html">album</a></li>
-              <li><a href="links.html">links</a></li>
               <li class="current"><a href="wishes.html">your wishes</a></li>
               <li><a href="contacts.html">contacts</a></li>
+			  <li id="donation">
+			  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+			<input type="hidden" name="cmd" value="_donations">
+			<input type="hidden" name="business" value="jkamga.officiel@gmail.com">
+			<input type="hidden" name="lc" value="CA">
+			<input type="hidden" name="item_name" value="Rudy & Cinthy">
+			<input type="hidden" name="item_number" value="wedding">
+			<input type="hidden" name="no_note" value="0">
+			<input type="hidden" name="currency_code" value="CAD">
+			<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+			<input type="image" src="https://www.paypalobjects.com/fr_CA/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+			<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+			</form>
+			</li>			  
           </ul>
       </nav>
     </header> 
@@ -48,159 +57,9 @@ exit;
   <!--==============================content================================-->
     <section id="content"><div class="ic">More Website Templates @ TemplateMonster.com. July 30, 2012!</div>
     	<div class="container_24">
-        	<div class="grid_24">
-            	<div class="top-1">
-                    <h4><strong>Your</strong> wishes:</h4>
-					<div class="box-4 wrap">
-                    	<div class="fleft">
-                            <div class="box-1">
-                                <img src="images/page5-img1.jpg" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="text-1">Thom Smith</p>
-                                    <p class="text-2">said:</p>
-                                </div>
-                            </div>
-                            <div class="comments-4">
-                                <div class="comments-corner"></div>
-                                <div class="comment-1">
-                                    <div class="comment-2">
-                                        <p class="text-4"><strong class="clr-1">Vivamus sed arcu duieu tincidunt sem.</strong> Vivamus endrerit mauris ut dui 
-gravida ut viverra lectus tincidunt. Cras mattis tempor eros nec tristique. Sed sed felis arcu, vel vehicula augue.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fleft">
-                            <div class="box-1">
-                                <img src="images/page5-img2.jpg" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="text-1">Linda Black</p>
-                                    <p class="text-2">said:</p>
-                                </div>
-                            </div>
-                            <div class="comments-4">
-                                <div class="comments-corner"></div>
-                                <div class="comment-1">
-                                    <div class="comment-2">
-                                        <p class="text-4"><strong class="clr-1">Vivamus endrerit mauris ut dui gravida ut viverra.</strong> Lectus tincidunt. Cras mattis tempor eros nec tristique. Sed sed felis arcu, vel vehicula augue. 
-Maecenas faucibus sagittis cursus. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fleft">
-                            <div class="box-1">
-                                <img src="images/page5-img3.jpg" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="text-1">April Johnson</p>
-                                    <p class="text-2">said:</p>
-                                </div>
-                            </div>
-                            <div class="comments-4">
-                                <div class="comments-corner"></div>
-                                <div class="comment-1">
-                                    <div class="comment-2">
-                                        <p class="text-4"><strong class="clr-1">Cras mattis tempor eros nec tristique.</strong> Sed sed felis arcu, vel vehicula augue. Maecenas faucibus sagittis cursus. 
-Fusce tincidunt, tellus eget tristique cursus, orci mi iaculis sem, sit amet dictum velit.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fleft last">
-                            <div class="box-1">
-                                <img src="images/page5-img4.jpg" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="text-1">Sara Green</p>
-                                    <p class="text-2">said:</p>
-                                </div>
-                            </div>
-                            <div class="comments-4">
-                                <div class="comments-corner"></div>
-                                <div class="comment-1">
-                                    <div class="comment-2">
-                                        <p class="text-4"><strong class="clr-1">Vivamus sed arcu duieu tincidunt sem.</strong> Vivamus endrerit mauris ut dui 
-gravida ut viverra lectus tincidunt. Cras mattis tempor eros nec tristique. Sed sed felis arcu, vel vehicula augue. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-4 wrap top-8">
-                    	<div class="fleft">
-                            <div class="box-1">
-                                <img src="images/page5-img5.jpg" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="text-1">Alan Pool</p>
-                                    <p class="text-2">said:</p>
-                                </div>
-                            </div>
-                            <div class="comments-4">
-                                <div class="comments-corner"></div>
-                                <div class="comment-1">
-                                    <div class="comment-2">
-                                        <p class="text-4"><strong class="clr-1">Cras mattis tempor eros nec tristique.</strong> Sed sed felis arcu, vel vehicula augue. Maecenas faucibus sagittis cursus. 
-Fusce tincidunt, tellus eget tristique cursus, orci mi iaculis sem, sit amet dictum velit.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fleft">
-                            <div class="box-1">
-                                <img src="images/page5-img6.jpg" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="text-1">Serg Brin</p>
-                                    <p class="text-2">said:</p>
-                                </div>
-                            </div>
-                            <div class="comments-4">
-                                <div class="comments-corner"></div>
-                                <div class="comment-1">
-                                    <div class="comment-2">
-                                        <p class="text-4"><strong class="clr-1">Vivamus sed arcu duieu tincidunt sem.</strong> Vivamus endrerit mauris ut dui 
-gravida ut viverra lectus tincidunt. Cras mattis tempor eros nec tristique. Sed sed felis arcu, vel vehicula augue. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fleft">
-                            <div class="box-1">
-                                <img src="images/page5-img7.jpg" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="text-1">Liza Lee</p>
-                                    <p class="text-2">said:</p>
-                                </div>
-                            </div>
-                            <div class="comments-4">
-                                <div class="comments-corner"></div>
-                                <div class="comment-1">
-                                    <div class="comment-2">
-                                        <p class="text-4"><strong class="clr-1">Sed sed felis arcu, vel ehicula augue.</strong> Maecenas faucibus sagittis cursus. Fusce tincidunt, tellus eget tristique cursus, orci mi iaculis sem, sit amet dictum velit velit eu magna.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fleft last">
-                            <div class="box-1">
-                                <img src="images/page5-img8.jpg" alt="" class="img-border img-indent">
-                                <div class="extra-wrap">
-                                    <p class="text-1">Julia Jobs</p>
-                                    <p class="text-2">said:</p>
-                                </div>
-                            </div>
-                            <div class="comments-4">
-                                <div class="comments-corner"></div>
-                                <div class="comment-1">
-                                    <div class="comment-2">
-                                        <p class="text-4"><strong class="clr-1">Maecenas faucibus sagittis cursus.</strong> Fusce tincidunt, tellus eget tristique cursus, orci mi iaculis sem, sit amet dictum velit velit eu magna. Nunc viverra nisi sed orci tincidunt at hendrerit orci luctus. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#" class="link-1">Read more</a>
-                    </div>
-				</div>
-    		</div>  
-            <div class="clear"></div>
+        			<a id="nabblelink" href="http://cynthie-rudy-forum.69090.x6.nabble.com/">Cynthie & Rudy forum</a>
+                    <script src="http://cynthie-rudy-forum.69090.x6.nabble.com/embed/f1"></script>
+	
         </div>
     </section> 
 <!--==============================footer=================================-->
